@@ -21,4 +21,34 @@ public class VehiculoController {
         return ResponseEntity.ok(vehiculos);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<VehiculoEntity> getVehiculosById(@PathVariable Long id) {
+        VehiculoEntity vehiculo = vehiculoService.getVehiculoById(id);
+        return ResponseEntity.ok(vehiculo);
+    }
+
+    @GetMapping("/{patente}")
+    public ResponseEntity<VehiculoEntity> getVehiculoByPatente(@PathVariable String patente) {
+        VehiculoEntity vehiculo = vehiculoService.getVehiculoByPatente(patente);
+        return ResponseEntity.ok(vehiculo);
+    }
+
+    @PostMapping("/")
+    public ResponseEntity<VehiculoEntity> saveVehiculo(@RequestBody VehiculoEntity vehiculo) {
+        VehiculoEntity vehiculoNew = vehiculoService.saveVehiculo(vehiculo);
+        return ResponseEntity.ok(vehiculoNew);
+    }
+
+    @PutMapping("/")
+    public ResponseEntity<VehiculoEntity> updateVehiculo(@RequestBody VehiculoEntity vehiculo){
+        VehiculoEntity vehiculoUpdated = vehiculoService.updateVehiculo(vehiculo);
+        return ResponseEntity.ok(vehiculoUpdated);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Boolean> deleteVehiculoById(@PathVariable Long id) throws Exception {
+        var isDeleted = vehiculoService.deleteVehiculo(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }
