@@ -11,7 +11,17 @@ import java.util.List;
 @Repository
 public interface VehiculoRepository extends JpaRepository<VehiculoEntity, Long> {
     public VehiculoEntity findByPatente(String patente);
-    public VehiculoEntity findByMarca(String marca);
+    List<VehiculoEntity> findByMarca(String marca);
+    List<VehiculoEntity> findByModelo(String modelo);
+    List<VehiculoEntity> findByTipo(String tipo);
+    List<VehiculoEntity> findByTipoMotor(String tipoMotor);
+    List<VehiculoEntity> findByAñoFabricacion(int añoFabricacion);
+    List<VehiculoEntity> findByKilometros(double kilometros);
+    List<VehiculoEntity> findByNAsientos(int NAsientos);
+    List<VehiculoEntity> findByAñoFabricacionBetween(Integer inicioAño, Integer finAño);
+    List<VehiculoEntity> findByKilometrosBetween(Double inicioK, Double finK);
+    List<VehiculoEntity> findByNAsientosBetween(Integer incioAsientos, Integer finAsientos);
+
 
     /*List<EmployeeEntity> findBySalaryGreaterThan(int salary);
     List<EmployeeEntity> findByChildrenBetween(Integer startChildren, Integer endChildren);
