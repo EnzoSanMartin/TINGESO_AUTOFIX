@@ -14,7 +14,4 @@ import java.util.List;
 @Service
 public class HistorialReparacionService {
 
-    public Long costoTotalReparacion(ReparacionEntity reparacion) {
-        
-    }
 }

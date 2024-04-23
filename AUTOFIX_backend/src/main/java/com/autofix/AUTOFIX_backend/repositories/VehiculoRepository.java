@@ -11,6 +11,7 @@ import java.util.List;
 @Repository
 public interface VehiculoRepository extends JpaRepository<VehiculoEntity, Long> {
     public VehiculoEntity findByPatente(String patente);
+
     List<VehiculoEntity> findByMarca(String marca);
     List<VehiculoEntity> findByModelo(String modelo);
     List<VehiculoEntity> findByTipo(String tipo);
@@ -18,15 +19,17 @@ public interface VehiculoRepository extends JpaRepository<VehiculoEntity, Long> 
     List<VehiculoEntity> findByAñoFabricacion(int añoFabricacion);
     List<VehiculoEntity> findByKilometros(double kilometros);
     List<VehiculoEntity> findByNAsientos(int NAsientos);
-    List<VehiculoEntity> findByAñoFabricacionBetween(Integer inicioAño, Integer finAño);
-    List<VehiculoEntity> findByKilometrosBetween(Double inicioK, Double finK);
-    List<VehiculoEntity> findByNAsientosBetween(Integer incioAsientos, Integer finAsientos);
 
+    @Query(value = "SELECT * FROM vehiculo WHERE vehiculo.añoFabricacion BETWEEN :inicioAño AND :finAño", nativeQuery = true)
+    List<VehiculoEntity> findByAñoFabricacionBetween(@Param("inicioAño") Integer inicioAño, @Param("finAño") Integer finAño);
 
-    /*List<EmployeeEntity> findBySalaryGreaterThan(int salary);
-    List<EmployeeEntity> findByChildrenBetween(Integer startChildren, Integer endChildren);
-    @Query(value = "SELECT * FROM employees WHERE employees.rut = :rut", nativeQuery = true)
-    EmployeeEntity findByRutNativeQuery(@Param("rut") String rut);*/
+    @Query(value = "SELECT * FROM vehiculo WHERE vehiculo.kilometros BETWEEN :inicioK AND :finK", nativeQuery = true)
+    List<VehiculoEntity> findByKilometrosBetween(@Param("inicioK") Double inicioK, @Param("finK") Double finK);
 
+    @Query(value = "SELECT * FROM vehiculo WHERE vehiculo.NAsientos BETWEEN :inicioAsientos AND :finAsientos", nativeQuery = true)
+    List<VehiculoEntity> findByNAsientosBetween(@Param("inicioAsientos") Integer incioAsientos, @Param("finAsientos") Integer finAsientos);
+
+    @Query(value = "SELECT COUNT(*) FROM vehiculo WHERE vehiculo.patente = :patente", nativeQuery = true)
+    int countByNombre(@Param("patente") String patente);
 
 }

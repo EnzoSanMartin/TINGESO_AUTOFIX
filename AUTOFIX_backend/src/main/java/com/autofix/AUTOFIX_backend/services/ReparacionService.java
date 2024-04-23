@@ -15,7 +15,25 @@ public class ReparacionService {
     @Autowired
     ReparacionRepository reparacionRepository;
 
+    public ArrayList<ReparacionEntity> getReparaciones () {return (ArrayList<ReparacionEntity>) reparacionRepository.findAll(); }
+
+    public ArrayList<ReparacionEntity> getPrecioGasolinaBetween(long precioI, long precioF) {return (ArrayList<ReparacionEntity>) reparacionRepository.findByPrecioGasolinaBetween(precioI, precioF); }
+    public ArrayList<ReparacionEntity> getPrecioDieselBetween(long precioI, long precioF) {return (ArrayList<ReparacionEntity>) reparacionRepository.findByPrecioDieselBetween(precioI, precioF); }
+    public ArrayList<ReparacionEntity> getPrecioHibridoBetween(long precioI, long precioF) {return (ArrayList<ReparacionEntity>) reparacionRepository.findByPrecioHibridoBetween(precioI, precioF); }
+    public ArrayList<ReparacionEntity> getPrecioElectricoBetween(long precioI, long precioF) {return (ArrayList<ReparacionEntity>) reparacionRepository.findByPrecioElectricoBetween(precioI, precioF); }
 
     public ReparacionEntity saveReparacion(ReparacionEntity reparacion) {return reparacionRepository.save(reparacion); }
     public ReparacionEntity updateReparacion(ReparacionEntity reparacion) {return reparacionRepository.save(reparacion); }
+
+    public ReparacionEntity getReparacionById(Long id) {return reparacionRepository.findById(id).get(); }
+    public ReparacionEntity getReparacionByNombre(String nombre) {return reparacionRepository.findByNombre(nombre); }
+
+    public boolean deleteReparacion(Long id) throws Exception {
+        try {
+            reparacionRepository.deleteById(id);
+            return true;
+        } catch (Exception e) {
+            throw  new Exception(e.getMessage());
+        }
+    }
 }

@@ -12,4 +12,17 @@ import java.util.List;
 public interface ReparacionRepository extends JpaRepository<ReparacionEntity, Long> {
     public ReparacionEntity findByNombre(String nombre);
 
+    @Query(value = "SELECT * FROM reparacion WHERE reparacion.precioGasolina BETWEEN :precioI AND :precioF", nativeQuery = true)
+    List<ReparacionEntity> findByPrecioGasolinaBetween(@Param("precioI") Long precioI, @Param("precioF") Long precioF);
+
+    @Query(value = "SELECT * FROM reparacion WHERE reparacion.precioDiesel BETWEEN :precioI AND :precioF", nativeQuery = true)
+    List<ReparacionEntity> findByPrecioDieselBetween(@Param("precioI") Long precioI, @Param("precioF") Long precioF);
+
+    @Query(value = "SELECT * FROM reparacion WHERE reparacion.precioHibrido BETWEEN :precioI AND :precioF", nativeQuery = true)
+    List<ReparacionEntity> findByPrecioHibridoBetween(@Param("precioI") Long precioI, @Param("precioF") Long precioF);
+
+    @Query(value = "SELECT * FROM reparacion WHERE reparacion.precioElectrico BETWEEN :precioI AND :precioF", nativeQuery = true)
+    List<ReparacionEntity> findByPrecioElectricoBetween(@Param("precioI") Long precioI, @Param("precioF") Long precioF);
+
+
 }

@@ -7,22 +7,19 @@ import lombok.Data;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "reparacion")
+@Table(name = "bono")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class ReparacionEntity {
+public class BonoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     private Long id;
 
-    private String nombre;
-    private String descripcion;
-    private Long precioGasolina;
-    private Long precioDiesel;
-    private Long precioHibrido;
-    private Long precioElectrico;
+    private String marca;
+    private int cantBonos;
+    private Long monto;
 }
