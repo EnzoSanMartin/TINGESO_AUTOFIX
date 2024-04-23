@@ -25,4 +25,5 @@ public class VehiculoEntity {
     private String tipoMotor;
     private int añoFabricacion;
     private int NAsientos;
+    private double kilometros;
 }
