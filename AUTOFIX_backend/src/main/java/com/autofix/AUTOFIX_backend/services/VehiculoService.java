@@ -33,7 +33,7 @@ public class VehiculoService {
     public VehiculoEntity updateVehiculo(VehiculoEntity vehiculo) {return vehiculoRepository.save(vehiculo); }
     public VehiculoEntity getVehiculoByPatente(String patente) {return  vehiculoRepository.findByPatente(patente); }
 
-    public boolean existsHehiculo(String patente) {
+    public boolean existsVehiculo(String patente) {
         int cant = vehiculoRepository.countByNombre(patente);
         if (cant == 0) {
             return false;

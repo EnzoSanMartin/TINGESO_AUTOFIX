@@ -63,6 +63,18 @@ public class VehiculoController {
         return ResponseEntity.ok(NA);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<VehiculoEntity> getVehiculosById(@PathVariable Long id) {
+        VehiculoEntity vehiculo = vehiculoService.getVehiculoById(id);
+        return ResponseEntity.ok(vehiculo);
+    }
+
+    @GetMapping("/{patente}")
+    public ResponseEntity<VehiculoEntity> getVehiculoByPatente(@PathVariable String patente) {
+        VehiculoEntity vehiculo = vehiculoService.getVehiculoByPatente(patente);
+        return ResponseEntity.ok(vehiculo);
+    }
+
     @GetMapping("/{añoI}{añoF}")
     public ResponseEntity<List<VehiculoEntity>> listAñosFBetween(@PathVariable int añoI, @PathVariable int añoF) {
         List<VehiculoEntity> añosFB = vehiculoService.getAñosFBetween(añoI, añoF);
@@ -79,18 +91,6 @@ public class VehiculoController {
     public ResponseEntity<List<VehiculoEntity>> listAsientosBetween(@PathVariable int asientosI, @PathVariable int asientosF) {
         List<VehiculoEntity> asientosBetween = vehiculoService.getAsientosBetween(asientosI, asientosF);
         return ResponseEntity.ok(asientosBetween);
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<VehiculoEntity> getVehiculosById(@PathVariable Long id) {
-        VehiculoEntity vehiculo = vehiculoService.getVehiculoById(id);
-        return ResponseEntity.ok(vehiculo);
-    }
-
-    @GetMapping("/{patente}")
-    public ResponseEntity<VehiculoEntity> getVehiculoByPatente(@PathVariable String patente) {
-        VehiculoEntity vehiculo = vehiculoService.getVehiculoByPatente(patente);
-        return ResponseEntity.ok(vehiculo);
     }
 
     @PostMapping("/")
