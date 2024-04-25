@@ -29,16 +29,12 @@ public class VehiculoService {
     public ArrayList<VehiculoEntity> getAsientosBetween(int asientosI, int asientosF) {return (ArrayList<VehiculoEntity>) vehiculoRepository.findByNAsientosBetween(asientosI, asientosF); }
 
     public VehiculoEntity saveVehiculo(VehiculoEntity vehiculo) {return vehiculoRepository.save(vehiculo); }
-    public VehiculoEntity getVehiculoById(Long id) {return vehiculoRepository.findById(id).get(); }
     public VehiculoEntity updateVehiculo(VehiculoEntity vehiculo) {return vehiculoRepository.save(vehiculo); }
+
+    public VehiculoEntity getVehiculoById(Long id) {return vehiculoRepository.findById(id).get(); }
     public VehiculoEntity getVehiculoByPatente(String patente) {return  vehiculoRepository.findByPatente(patente); }
 
-    public boolean existsVehiculo(String patente) {
-        int cant = vehiculoRepository.countByNombre(patente);
-        if (cant == 0) {
-            return false;
-        } return true;
-    }
+    public boolean existsVehiculoByPatente(String patente) {return vehiculoRepository.existsVehiculoByPatente(patente); } ;
 
     public boolean deleteVehiculo(Long id) throws Exception {
         try {

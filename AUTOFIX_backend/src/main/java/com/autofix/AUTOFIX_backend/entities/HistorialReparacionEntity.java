@@ -7,6 +7,7 @@ import lombok.Data;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "historialReparacion")
@@ -23,9 +24,11 @@ public class HistorialReparacionEntity {
 
     private Date ingresoTaller;/*formato  año (a partir de 1900), mes (0-11), día, hora, minuto, segundo*/
     private String diaIngreso;
-    private Long id_reparacion;
+    private List<Long> id_reparaciones;
+    private String patente;
     private Long montoTotal;
     private Date terminoReparacion;/*formato  año (a partir de 1900), mes (0-11), día, hora, minuto, segundo*/
     private Date salidaTaller;/*formato  año (a partir de 1900), mes (0-11), día, hora, minuto, segundo*/
+
 
 }

@@ -29,7 +29,6 @@ public interface VehiculoRepository extends JpaRepository<VehiculoEntity, Long> 
     @Query(value = "SELECT * FROM vehiculo WHERE vehiculo.NAsientos BETWEEN :inicioAsientos AND :finAsientos", nativeQuery = true)
     List<VehiculoEntity> findByNAsientosBetween(@Param("inicioAsientos") Integer incioAsientos, @Param("finAsientos") Integer finAsientos);
 
-    @Query(value = "SELECT COUNT(*) FROM vehiculo WHERE vehiculo.patente = :patente", nativeQuery = true)
-    int countByNombre(@Param("patente") String patente);
+    boolean existsVehiculoByPatente(String patente);
 
 }

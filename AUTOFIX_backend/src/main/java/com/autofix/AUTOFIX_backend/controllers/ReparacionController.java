@@ -53,7 +53,7 @@ public class ReparacionController {
         return ResponseEntity.ok(reparacion);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{nombre}")
     public ResponseEntity<ReparacionEntity> getReparracionesByNombre(@PathVariable String nombre) {
         ReparacionEntity reparacion = reparacionService.getReparacionByNombre(nombre);
         return ResponseEntity.ok(reparacion);

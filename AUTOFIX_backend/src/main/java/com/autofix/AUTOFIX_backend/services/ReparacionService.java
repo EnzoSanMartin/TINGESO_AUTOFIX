@@ -24,6 +24,10 @@ public class ReparacionService {
 
     public ReparacionEntity saveReparacion(ReparacionEntity reparacion) {return reparacionRepository.save(reparacion); }
     public ReparacionEntity updateReparacion(ReparacionEntity reparacion) {return reparacionRepository.save(reparacion); }
+    public void updatePrecioGasolina(Long precioNew, Long idEntry ) {reparacionRepository.updatePrecioGasolina(precioNew, idEntry) ;}
+    public void updatePrecioDiesel(Long precioNew, Long idEntry ) {reparacionRepository.updatePrecioDiesel(precioNew, idEntry) ;}
+    public void updatePrecioHibrido(Long precioNew, Long idEntry ) {reparacionRepository.updatePrecioHibrido(precioNew, idEntry) ;}
+    public void updatePrecioElectrico(Long precioNew, Long idEntry ) {reparacionRepository.updatePrecioEletrico(precioNew, idEntry) ;}
 
     public ReparacionEntity getReparacionById(Long id) {return reparacionRepository.findById(id).get(); }
     public ReparacionEntity getReparacionByNombre(String nombre) {return reparacionRepository.findByNombre(nombre); }
