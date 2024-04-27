@@ -7,23 +7,22 @@ import lombok.Data;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "vehiculo")
+@Table(name = "descuentoCantReparaciones")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class VehiculoEntity {
+public class DescuentoCantReparacionesEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     private Long id;
 
-    private String patente;
-    private String marca;
-    private String modelo;
-    private String tipo;
-    private String tipoMotor;
-    private int añoFabricacion;
-    private int NAsientos;
-    private Long kilometros;
+    private int cotaInicial;
+    private int cotaFinal;
+    private int gasolina;
+    private int diesel;
+    private int hibrido;
+    private int electrico;
+
 }

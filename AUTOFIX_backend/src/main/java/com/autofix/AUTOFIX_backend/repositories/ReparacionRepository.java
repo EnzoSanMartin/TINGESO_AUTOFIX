@@ -17,12 +17,15 @@ public interface ReparacionRepository extends JpaRepository<ReparacionEntity, Lo
     @Query(value = "UPDATE reparacion SET reparacion.precioGasolina =: precioNew WHERE reparacion.id = :idEntry", nativeQuery = true)
     public Long updatePrecioGasolina(@Param("precioNew") Long precioNew, @Param("idEntry") Long idEntry);
 
+    @Modifying
     @Query(value = "UPDATE reparacion SET reparacion.precioDiesel =:precioNew WHERE reparacion.id = :idEntry", nativeQuery = true)
     public Long updatePrecioDiesel(@Param("precioNew") Long precioNew, @Param("idEntry") Long idEntry);
 
+    @Modifying
     @Query(value = "UPDATE reparacion SET reparacion.precioHibrido =:precioNew WHERE reparacion.id = :idEntry", nativeQuery = true)
     public Long updatePrecioHibrido(@Param("precioNew") Long precioNew, @Param("idEntry") Long idEntry);
 
+    @Modifying
     @Query(value = "UPDATE reparacion SET reparacion.precioElectrico =:precioNew WHERE reparacion.id = :idEntry", nativeQuery = true)
     public Long updatePrecioEletrico(@Param("precioNew") Long precioNew, @Param("idEntry") Long idEntry);
 

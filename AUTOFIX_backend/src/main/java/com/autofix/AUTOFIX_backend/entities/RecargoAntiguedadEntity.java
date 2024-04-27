@@ -18,11 +18,11 @@ public class RecargoAntiguedadEntity {
     @Column(unique = true, nullable = false)
     private Long id;
 
-    private double cotaInicial;
-    private double cotaFinal;
-    private String sedan;
-    private String hatchback;
-    private String suv;
-    private String pickup;
-    private String furgoneta;
+    private int cotaInicial;
+    private int cotaFinal;
+    private int sedan;
+    private int hatchback;
+    private int suv;
+    private int pickup;
+    private int furgoneta;
 }

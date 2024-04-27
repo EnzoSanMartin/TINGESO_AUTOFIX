@@ -17,14 +17,14 @@ public interface VehiculoRepository extends JpaRepository<VehiculoEntity, Long> 
     List<VehiculoEntity> findByTipo(String tipo);
     List<VehiculoEntity> findByTipoMotor(String tipoMotor);
     List<VehiculoEntity> findByAñoFabricacion(int añoFabricacion);
-    List<VehiculoEntity> findByKilometros(double kilometros);
+    List<VehiculoEntity> findByKilometros(Long kilometros);
     List<VehiculoEntity> findByNAsientos(int NAsientos);
 
     @Query(value = "SELECT * FROM vehiculo WHERE vehiculo.añoFabricacion BETWEEN :inicioAño AND :finAño", nativeQuery = true)
     List<VehiculoEntity> findByAñoFabricacionBetween(@Param("inicioAño") Integer inicioAño, @Param("finAño") Integer finAño);
 
     @Query(value = "SELECT * FROM vehiculo WHERE vehiculo.kilometros BETWEEN :inicioK AND :finK", nativeQuery = true)
-    List<VehiculoEntity> findByKilometrosBetween(@Param("inicioK") Double inicioK, @Param("finK") Double finK);
+    List<VehiculoEntity> findByKilometrosBetween(@Param("inicioK") Long inicioK, @Param("finK") Long finK);
 
     @Query(value = "SELECT * FROM vehiculo WHERE vehiculo.NAsientos BETWEEN :inicioAsientos AND :finAsientos", nativeQuery = true)
     List<VehiculoEntity> findByNAsientosBetween(@Param("inicioAsientos") Integer incioAsientos, @Param("finAsientos") Integer finAsientos);

@@ -25,6 +25,11 @@ public interface HistorialReparacionRepository extends JpaRepository<HistorialRe
     @Query("SELECT * FROM historialReparacion WHERE historialReparacion.salidaTaller BETWEEN :fechaInicio AND :fechaFin")
     List<HistorialReparacionEntity> findBySalidaTallerBetween(@Param("fechaInicio") Date fechaInicio, @Param("fechaFin") Date fechaFin);
 
+    @Query("SELECT COUNT(*) FROM historialReparacion WHERE historialReparacion.patente = :patente AND historialReparacion.terminoReparacion >= :fecha")
+    int countReparacionesByPatente(@Param("patente") String patente, @Param("fecha") Date fecha);
+
+   //@Query("SELECT h.patente, COUNT(*) AS cantidad_reparaciones FROM HistorialReparacionEntity h WHERE h.ingresoTaller >= :fechaInicio GROUP BY h.patente")
+    //List<Object[]> countReparacionesPorPatenteEnUltimos12Meses(@Param("fechaInicio") Date fechaInicio);
 
 
 

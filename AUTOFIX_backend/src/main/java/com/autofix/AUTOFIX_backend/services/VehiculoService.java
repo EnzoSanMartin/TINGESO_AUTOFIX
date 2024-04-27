@@ -22,10 +22,10 @@ public class VehiculoService {
     public ArrayList<VehiculoEntity> getTipos(String tipo) {return (ArrayList<VehiculoEntity>) vehiculoRepository.findByTipo(tipo); }
     public ArrayList<VehiculoEntity> getTiposMotor(String tipoMotor) {return (ArrayList<VehiculoEntity>) vehiculoRepository.findByTipoMotor(tipoMotor); }
     public ArrayList<VehiculoEntity> getAñosF(int año) {return (ArrayList<VehiculoEntity>) vehiculoRepository.findByAñoFabricacion(año); }
-    public ArrayList<VehiculoEntity> getKilometros(double kilometros) {return (ArrayList<VehiculoEntity>) vehiculoRepository.findByKilometros(kilometros); }
+    public ArrayList<VehiculoEntity> getKilometros(Long kilometros) {return (ArrayList<VehiculoEntity>) vehiculoRepository.findByKilometros(kilometros); }
     public ArrayList<VehiculoEntity> getAsientos(int asientos) {return (ArrayList<VehiculoEntity>) vehiculoRepository.findByNAsientos(asientos); }
     public ArrayList<VehiculoEntity> getAñosFBetween(int añoI, int añoF) {return (ArrayList<VehiculoEntity>) vehiculoRepository.findByAñoFabricacionBetween(añoI, añoF); }
-    public ArrayList<VehiculoEntity> getKilometrosBetween(double kilometrosI, double kilometrosF) {return (ArrayList<VehiculoEntity>) vehiculoRepository.findByKilometrosBetween(kilometrosI, kilometrosF); }
+    public ArrayList<VehiculoEntity> getKilometrosBetween(Long kilometrosI, Long kilometrosF) {return (ArrayList<VehiculoEntity>) vehiculoRepository.findByKilometrosBetween(kilometrosI, kilometrosF); }
     public ArrayList<VehiculoEntity> getAsientosBetween(int asientosI, int asientosF) {return (ArrayList<VehiculoEntity>) vehiculoRepository.findByNAsientosBetween(asientosI, asientosF); }
 
     public VehiculoEntity saveVehiculo(VehiculoEntity vehiculo) {return vehiculoRepository.save(vehiculo); }

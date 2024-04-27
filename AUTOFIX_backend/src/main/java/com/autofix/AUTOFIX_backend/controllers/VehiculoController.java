@@ -52,7 +52,7 @@ public class VehiculoController {
     }
 
     @GetMapping("/{kilometros}")
-    public ResponseEntity<List<VehiculoEntity>> listKilometros(@PathVariable double kilometros) {
+    public ResponseEntity<List<VehiculoEntity>> listKilometros(@PathVariable Long kilometros) {
         List<VehiculoEntity> km = vehiculoService.getKilometros(kilometros);
         return ResponseEntity.ok(km);
     }
@@ -82,7 +82,7 @@ public class VehiculoController {
     }
 
     @GetMapping("/{kilometrosI}{kilometrosF}")
-    public ResponseEntity<List<VehiculoEntity>> listKilometrosBetween(@PathVariable double kilometrosI, @PathVariable double kilometrosF) {
+    public ResponseEntity<List<VehiculoEntity>> listKilometrosBetween(@PathVariable Long kilometrosI, @PathVariable Long kilometrosF) {
         List<VehiculoEntity> kilometrosBetween = vehiculoService.getKilometrosBetween(kilometrosI, kilometrosF);
         return ResponseEntity.ok(kilometrosBetween);
     }

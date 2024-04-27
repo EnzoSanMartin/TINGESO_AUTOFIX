@@ -18,8 +18,8 @@ public class RecargoKilometrajeEntity {
     @Column(unique = true, nullable = false)
     private Long id;
 
-    private double cotaInicial;
-    private double cotaFinal;
+    private Long cotaInicial;
+    private Long cotaFinal;
     private int sedan;
     private int hatchback;
     private int suv;
