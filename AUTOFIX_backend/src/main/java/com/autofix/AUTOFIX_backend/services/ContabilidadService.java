@@ -6,6 +6,7 @@ import com.autofix.AUTOFIX_backend.entities.HistorialReparacionEntity;
 import com.autofix.AUTOFIX_backend.entities.RecargoKilometrajeEntity;
 import com.autofix.AUTOFIX_backend.entities.RecargoAntiguedadEntity;
 import com.autofix.AUTOFIX_backend.entities.DescuentoCantReparacionesEntity;
+import com.autofix.AUTOFIX_backend.entities.BonoEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +30,8 @@ public class ContabilidadService {
     RecargoAntiguedadService recargoAntiguedadService;
     @Autowired
     DescuentoCantReparacionesService descuentoCantReparacionesService;
+    @Autowired
+    BonoService bonoService;
 
 
     public Long sumReparaciones(HistorialReparacionEntity historialReparacion) {
@@ -85,6 +88,14 @@ public class ContabilidadService {
         Long diferencia = fechaSalida - fechaTermino;
         Long diasDiferencia = TimeUnit.DAYS.convert(diferencia, TimeUnit.MILLISECONDS);
         recargo += (diasDiferencia * 5);
+
+        //BONOS
+        BonoEntity bono = bonoService.getMarca(vehiculo.getMarca());
+        if (bono.getCantBonos() != 0) {
+            sumaFinal = sumaFinal - bono.getMonto();
+            bono.setCantBonos(bono.getCantBonos() - 1);
+            bonoService.updateBono(bono);
+        }
 
         sumaFinal = sumaFinal + ((sumaFinal * (recargo - descuento))/ 100);
 
