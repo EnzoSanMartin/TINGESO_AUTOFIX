@@ -13,8 +13,8 @@ import java.util.List;
 public interface ReparacionRepository extends JpaRepository<ReparacionEntity, Long> {
     public ReparacionEntity findByNombre(String nombre);
 
-    @Modifying
-    @Query(value = "UPDATE reparacion SET reparacion.precioGasolina =: precioNew WHERE reparacion.id = :idEntry", nativeQuery = true)
+
+    @Query(value = "UPDATE reparacion SET reparacion.precioGasolina = :precioNew WHERE reparacion.id = :idEntry", nativeQuery = true)
     public Long updatePrecioGasolina(@Param("precioNew") Long precioNew, @Param("idEntry") Long idEntry);
 
     @Modifying

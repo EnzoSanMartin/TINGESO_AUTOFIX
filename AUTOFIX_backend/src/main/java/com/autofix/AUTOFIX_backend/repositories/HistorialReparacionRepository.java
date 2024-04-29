@@ -14,22 +14,20 @@ public interface HistorialReparacionRepository extends JpaRepository<HistorialRe
 
     List<HistorialReparacionEntity> findByIngresoTaller(Date ingresoTaller);
     List<HistorialReparacionEntity> findByDiaIngreso(String diaIngreso);
-    List<HistorialReparacionEntity> findByIdReparacion(Long idReparacion);
+    List<HistorialReparacionEntity> findByIdReparaciones(List<Long> idReparacion);
+    List<HistorialReparacionEntity> findByPatente(String patente);
 
-    @Query("SELECT * FROM historialReparacion WHERE historialReparacion.ingresoTaller BETWEEN :fechaInicio AND :fechaFin")
+    @Query(value = "SELECT * FROM historialReparacion WHERE historialReparacion.ingresoTaller BETWEEN :fechaInicio AND :fechaFin", nativeQuery = true)
     List<HistorialReparacionEntity> findByIngresoTallerBetween(@Param("fechaInicio") Date fechaInicio, @Param("fechaFin") Date fechaFin);
 
-    @Query("SELECT * FROM historialReparacion WHERE historialReparacion.terminoReparacion BETWEEN :fechaInicio AND :fechaFin")
+    @Query(value = "SELECT * FROM historialReparacion WHERE historialReparacion.terminoReparacion BETWEEN :fechaInicio AND :fechaFin", nativeQuery = true)
     List<HistorialReparacionEntity> findByTerminoReparacionBetween(@Param("fechaInicio") Date fechaInicio, @Param("fechaFin") Date fechaFin);
 
-    @Query("SELECT * FROM historialReparacion WHERE historialReparacion.salidaTaller BETWEEN :fechaInicio AND :fechaFin")
+    @Query(value = "SELECT * FROM historialReparacion WHERE historialReparacion.salidaTaller BETWEEN :fechaInicio AND :fechaFin", nativeQuery = true)
     List<HistorialReparacionEntity> findBySalidaTallerBetween(@Param("fechaInicio") Date fechaInicio, @Param("fechaFin") Date fechaFin);
 
-    @Query("SELECT COUNT(*) FROM historialReparacion WHERE historialReparacion.patente = :patente AND historialReparacion.terminoReparacion >= :fecha")
+    @Query(value = "SELECT COUNT(*) FROM historialReparacion WHERE historialReparacion.patente = :patente AND historialReparacion.terminoReparacion >= :fecha", nativeQuery = true)
     int countReparacionesByPatente(@Param("patente") String patente, @Param("fecha") Date fecha);
-
-   //@Query("SELECT h.patente, COUNT(*) AS cantidad_reparaciones FROM HistorialReparacionEntity h WHERE h.ingresoTaller >= :fechaInicio GROUP BY h.patente")
-    //List<Object[]> countReparacionesPorPatenteEnUltimos12Meses(@Param("fechaInicio") Date fechaInicio);
 
 
 

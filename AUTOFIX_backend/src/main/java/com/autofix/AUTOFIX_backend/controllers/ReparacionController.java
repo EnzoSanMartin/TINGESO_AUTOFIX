@@ -1,7 +1,6 @@
 package com.autofix.AUTOFIX_backend.controllers;
 
 import com.autofix.AUTOFIX_backend.entities.ReparacionEntity;
-import com.autofix.AUTOFIX_backend.entities.VehiculoEntity;
 import com.autofix.AUTOFIX_backend.services.ReparacionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,27 +22,27 @@ public class ReparacionController {
         return ResponseEntity.ok(reparaciones);
     }
 
-    @GetMapping("/{precioI}{precioF}")
-    public ResponseEntity<List<ReparacionEntity>> listPreciosGasolinaBetween(@PathVariable long precioI, @PathVariable long precioF) {
-        List<ReparacionEntity> preciosGasolina = reparacionService.getPrecioGasolinaBetween(precioI, precioF);
+    @GetMapping("/{precioGI}{precioGF}")
+    public ResponseEntity<List<ReparacionEntity>> listPreciosGasolinaBetween(@PathVariable long precioGI, @PathVariable long precioGF) {
+        List<ReparacionEntity> preciosGasolina = reparacionService.getPrecioGasolinaBetween(precioGI, precioGF);
         return ResponseEntity.ok(preciosGasolina);
     }
 
-    @GetMapping("/{precioI}{precioF}")
-    public ResponseEntity<List<ReparacionEntity>> listPreciosDieselBetween(@PathVariable long precioI, @PathVariable long precioF) {
-        List<ReparacionEntity> preciosDiesel = reparacionService.getPrecioDieselBetween(precioI, precioF);
+    @GetMapping("/{precioDI}{precioDF}")
+    public ResponseEntity<List<ReparacionEntity>> listPreciosDieselBetween(@PathVariable long precioDI, @PathVariable long precioDF) {
+        List<ReparacionEntity> preciosDiesel = reparacionService.getPrecioDieselBetween(precioDI, precioDF);
         return ResponseEntity.ok(preciosDiesel);
     }
 
-    @GetMapping("/{precioI}{precioF}")
-    public ResponseEntity<List<ReparacionEntity>> listPreciosHibridoBetween(@PathVariable long precioI, @PathVariable long precioF) {
-        List<ReparacionEntity> preciosHibrido = reparacionService.getPrecioHibridoBetween(precioI, precioF);
+    @GetMapping("/{precioHI}{precioHF}")
+    public ResponseEntity<List<ReparacionEntity>> listPreciosHibridoBetween(@PathVariable long precioHI, @PathVariable long precioHF) {
+        List<ReparacionEntity> preciosHibrido = reparacionService.getPrecioHibridoBetween(precioHI, precioHF);
         return ResponseEntity.ok(preciosHibrido);
     }
 
-    @GetMapping("/{precioI}{precioF}")
-    public ResponseEntity<List<ReparacionEntity>> listPreciosElectricoBetween(@PathVariable long precioI, @PathVariable long precioF) {
-        List<ReparacionEntity> preciosElectrico = reparacionService.getPrecioElectricoBetween(precioI, precioF);
+    @GetMapping("/{precioEI}{precioEF}")
+    public ResponseEntity<List<ReparacionEntity>> listPreciosElectricoBetween(@PathVariable long precioEI, @PathVariable long precioEF) {
+        List<ReparacionEntity> preciosElectrico = reparacionService.getPrecioElectricoBetween(precioEI, precioEF);
         return ResponseEntity.ok(preciosElectrico);
     }
 

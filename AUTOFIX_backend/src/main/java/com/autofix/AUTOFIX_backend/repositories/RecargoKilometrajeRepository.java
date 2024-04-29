@@ -12,5 +12,5 @@ import java.util.List;
 public interface RecargoKilometrajeRepository extends JpaRepository<RecargoKilometrajeEntity, Long> {
 
     @Query(value = "SELECT * FROM recargoKilometraje WHERE recargoKilometraje.cotaInicial >= :kilometraje AND recargoKilometraje.cotafinal <= :kilometraje", nativeQuery = true)
-    RecargoKilometrajeEntity findByKM(@Param("kiometraje") Long kilometraje);
+    RecargoKilometrajeEntity findByKM(@Param("kilometraje") Long kilometraje);
 }

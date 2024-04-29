@@ -4,41 +4,41 @@ const getAll = () => {
     return httpClient.get('/autofix/v1/vehiculos/');
 }
 const getMarca = marca => {
-    return httpClient.get(`/autofix/v1/hehiculos/${marca}`);
+    return httpClient.get(`/autofix/v1/vehiculos/${marca}`);
 }
 const getModelo = modelo => {
-    return httpClient.get(`/autofix/v1/hehiculos/${modelo}`);
+    return httpClient.get(`/autofix/v1/vehiculos/${modelo}`);
 }
 const getTipo = tipo => {
-    return httpClient.get(`/autofix/v1/hehiculos/${tipo}`);
+    return httpClient.get(`/autofix/v1/vehiculos/${tipo}`);
 }
 const getTipoMotor = tipoMotor => {
-    return httpClient.get(`/autofix/v1/hehiculos/${tipoMotor}`);
+    return httpClient.get(`/autofix/v1/vehiculos/${tipoMotor}`);
 }
 const getAñoFabricacion = añoFrabricacion => {
-    return httpClient.get(`/autofix/v1/hehiculos/${añoFrabricacion}`);
+    return httpClient.get(`/autofix/v1/vehiculos/${añoFrabricacion}`);
 }
 const getKilometros = kilometros => {
-    return httpClient.get(`/autofix/v1/hehiculos/${kilometros}`);
+    return httpClient.get(`/autofix/v1/vehiculos/${kilometros}`);
 }
 const getAsientos = asientos => {
-    return httpClient.get(`/autofix/v1/hehiculos/${asientos}`);
+    return httpClient.get(`/autofix/v1/vehiculos/${asientos}`);
 }
 const getId = id => {
-    return httpClient.get(`/autofix/v1/hehiculos/${id}`);
+    return httpClient.get(`/autofix/v1/vehiculos/${id}`);
 }
 const getPatente = patente => {
-    return httpClient.get(`/autofix/v1/hehiculos/${patente}`);
+    return httpClient.get(`/autofix/v1/vehiculos/${patente}`);
 }
 
 const getAñosBetween = (añoI, añoF) => {
-    return httpClient.get(`/autofix/v1/hehiculos/${añoI}${añoF}`);
+    return httpClient.get(`/autofix/v1/vehiculos/${añoI}${añoF}`);
 }
 const getKilometrajeBetwwen = (kilometrosI, kilometrosF) => {
-    return httpClient.get(`/autofix/v1/hehiculos/${kilometrosI}${kilometrosF}`);
+    return httpClient.get(`/autofix/v1/vehiculos/${kilometrosI}${kilometrosF}`);
 }
 const getAsientosBetween = (asientosI, asientosF) => {
-    return httpClient.get(`/autofix/v1/hehiculos/${asientosI}${asientosF}`);
+    return httpClient.get(`/autofix/v1/vehiculos/${asientosI}${asientosF}`);
 }
 
 

@@ -24,7 +24,7 @@ public class HistorialReparacionEntity {
 
     private Date ingresoTaller;/*formato  año (a partir de 1900), mes (0-11), día, hora, minuto, segundo*/
     private String diaIngreso;
-    private List<Long> id_reparaciones;
+    private List<Long> idReparaciones;
     private String patente;
     private Long montoTotal;
     private Date terminoReparacion;/*formato  año (a partir de 1900), mes (0-11), día, hora, minuto, segundo*/
