@@ -36,6 +36,87 @@ public class HistorialReparacionService {
 
     public ArrayList<HistorialReparacionEntity> getHistorialReparaciones() {return (ArrayList<HistorialReparacionEntity>) historialReparacionRepository.findAll(); }
     public ArrayList<HistorialReparacionEntity> getHistorialesByPatente(String patente) {return (ArrayList<HistorialReparacionEntity>) historialReparacionRepository.findByPatente(patente); }
+    public ArrayList<HistorialReparacionEntity> getHistorialesByIdReparacion(Long id) {
+        List<HistorialReparacionEntity> historiales = getHistorialReparaciones();
+        ArrayList<HistorialReparacionEntity> listaHistoriales = new ArrayList<>();
+        for (HistorialReparacionEntity historialReparacion : historiales){
+            if (historialReparacion.getIdReparaciones().contains(id)) {
+                listaHistoriales.add(historialReparacion);
+            }
+        }
+        return listaHistoriales;
+    }
+    public ArrayList<HistorialReparacionEntity> getHistorialesByMarca(String marca) {
+        List<HistorialReparacionEntity> historiales = getHistorialReparaciones();
+        ArrayList<HistorialReparacionEntity> listaHistoriales = new ArrayList<>();
+        for (HistorialReparacionEntity historialReparacion : historiales) {
+            List<VehiculoEntity> vehiculos = vehiculoService.getMarcas(marca);
+            String patenteH = historialReparacion.getPatente();
+            for (VehiculoEntity vehiculo : vehiculos) {
+                if (patenteH.equals(vehiculo.getPatente())) {
+                    listaHistoriales.add(historialReparacion);
+                }
+            }
+        }
+        return listaHistoriales;
+    }
+    public Long avgByMarca(List<HistorialReparacionEntity> lista) {
+        int cant = 0;
+        Long cantFinal = 0L;
+        for (HistorialReparacionEntity historial : lista) {
+            Long fechaIngreso = historial.getIngresoTaller().getTime();
+            Long fechaTermino = historial.getTerminoReparacion().getTime();
+            Long diferencia = fechaTermino - fechaIngreso;
+            cant += 1;
+            cantFinal += diferencia;
+        }
+        cantFinal = (cantFinal / cant);
+        Long tiempoPromedio = TimeUnit.DAYS.convert(cantFinal, TimeUnit.MILLISECONDS);
+
+        return tiempoPromedio;
+    }
+
+    public int getCountHistorialReparacionesByTipo(String tipo, List<HistorialReparacionEntity> lista) {
+        int cant = 0;
+        for (HistorialReparacionEntity historial : lista) {
+            String newTipo = vehiculoService.getVehiculoByPatente(historial.getPatente()).getTipo();
+            if (tipo.equals(newTipo.toLowerCase())){
+                cant += 1;
+            }
+        }
+        return cant;
+    }
+    public Long getCountMontoByTipo(String tipo, List<HistorialReparacionEntity> lista) {
+        Long cant = 0L;
+        for (HistorialReparacionEntity historial : lista) {
+            String newTipo = vehiculoService.getVehiculoByPatente(historial.getPatente()).getTipo();
+            if (tipo.equals(newTipo.toLowerCase())){
+                cant += historial.getMontoTotal();
+            }
+        }
+        return cant;
+    }
+
+    public int getCountHistorialReparacionesByTipoMotor(String tipoMotor, List<HistorialReparacionEntity> lista) {
+        int cant = 0;
+        for (HistorialReparacionEntity historial : lista) {
+            String newTipoMotor = vehiculoService.getVehiculoByPatente(historial.getPatente()).getTipoMotor();
+            if (tipoMotor.equals(newTipoMotor.toLowerCase())){
+                cant += 1;
+            }
+        }
+        return cant;
+    }
+    public Long getCountMontoByTipoMotor(String tipoMotor, List<HistorialReparacionEntity> lista) {
+        Long cant = 0L;
+        for (HistorialReparacionEntity historial : lista) {
+            String newTipoMotor = vehiculoService.getVehiculoByPatente(historial.getPatente()).getTipoMotor();
+            if (tipoMotor.equals(newTipoMotor.toLowerCase())) {
+                cant += historial.getMontoTotal();
+            }
+        }
+        return cant;
+    }
 
     public int getCountReparacionesByPatente(String patente, Date fecha) {return historialReparacionRepository.countReparacionesByPatente(patente, fecha); }
 
@@ -64,7 +145,7 @@ public class HistorialReparacionService {
         String diaIngreso = historialReparacion.getDiaIngreso().toLowerCase();
         int horaIngreso = historialReparacion.getIngresoTaller().getHours();
 
-        if ((diaIngreso == "lunes" || diaIngreso == "jueves") && (horaIngreso >= 9 && horaIngreso <= 12)) {
+        if ((diaIngreso.equals("lunes") || diaIngreso.equals("jueves")) && (horaIngreso >= 9 && horaIngreso <= 12)) {
             descuento += 10;
         }
 

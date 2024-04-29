@@ -94,9 +94,12 @@ public class VehiculoController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<VehiculoEntity> saveVehiculo(@RequestBody VehiculoEntity vehiculo) {
-        VehiculoEntity vehiculoNew = vehiculoService.saveVehiculo(vehiculo);
-        return ResponseEntity.ok(vehiculoNew);
+    public ResponseEntity<String> saveVehiculo(@RequestBody VehiculoEntity vehiculo) {
+        if (vehiculoService.existsVehiculoByPatente(vehiculo.getPatente())){
+            return ResponseEntity.badRequest().body("El vehiculo ya existe");
+        }
+        vehiculoService.saveVehiculo(vehiculo);
+        return ResponseEntity.ok("El vehiculo fue registrado con exito");
     }
 
     @PutMapping("/")
