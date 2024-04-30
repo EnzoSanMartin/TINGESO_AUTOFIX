@@ -17,7 +17,7 @@ export default function Navbar() {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box display = "flex" sx={{ flexGrow: 1}}>
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -31,10 +31,9 @@ export default function Navbar() {
             <MenuIcon />
           </IconButton>
 
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            SisGR: Sistema de Gestión Remuneraciones
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1}}>
+            AUTOFIX
           </Typography>
-          <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
 

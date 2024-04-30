@@ -95,16 +95,16 @@ const VehiculoList = () => {
               Tipo
             </TableCell>
             <TableCell align="right" sx={{ fontWeight: "bold" }}>
-              TipoMotor
+              Tipo de Motor
             </TableCell>
             <TableCell align="left" sx={{ fontWeight: "bold" }}>
-              AñoFabricacion
+              Año de Fabricacion
             </TableCell>
             <TableCell align="left" sx={{ fontWeight: "bold" }}>
-                NumeroAsientos
+              Numero de Asientos
             </TableCell>
             <TableCell align="left" sx={{ fontWeight: "bold" }}>
-                Kilometraje
+              Kilometraje
             </TableCell>
           </TableRow>
         </TableHead>
@@ -120,7 +120,7 @@ const VehiculoList = () => {
               <TableCell align="right">{vehiculo.tipoMotor}</TableCell>
               <TableCell align="right">{vehiculo.añoFabricacion}</TableCell>
               <TableCell align="right">{vehiculo.NAsientos}</TableCell>
-              <TableCell abbr="right">{vehiculo.kilometros}</TableCell>
+              <TableCell align="right">{vehiculo.kilometros}</TableCell>
               <TableCell>
                 <Button
                   variant="contained"

@@ -1,6 +1,5 @@
 package com.autofix.AUTOFIX_backend.controllers;
 
-import com.autofix.AUTOFIX_backend.entities.VehiculoEntity;
 import com.autofix.AUTOFIX_backend.services.ReportesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

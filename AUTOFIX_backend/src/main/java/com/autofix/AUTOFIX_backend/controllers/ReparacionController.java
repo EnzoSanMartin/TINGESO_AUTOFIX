@@ -66,8 +66,8 @@ public class ReparacionController {
 
     @PutMapping("/")
     public ResponseEntity<ReparacionEntity> updateReparacion(@RequestBody ReparacionEntity reparacion){
-        ReparacionEntity reparacionUpdated = reparacionService.updateReparacion(reparacion);
-        return ResponseEntity.ok(reparacionUpdated);
+        ReparacionEntity reparacionUpdate = reparacionService.updateReparacion(reparacion);
+        return ResponseEntity.ok(reparacionUpdate);
     }
 
     @DeleteMapping("/{id}")

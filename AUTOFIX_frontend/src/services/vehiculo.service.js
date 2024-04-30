@@ -42,8 +42,8 @@ const getAsientosBetween = (asientosI, asientosF) => {
 }
 
 
-const create = data => {
-    return httpClient.post("/autofix/v1/vehiculos/", data);
+const create = () => {
+    return httpClient.post('/autofix/v1/vehiculos/');
 }
 
 const update = data => {
